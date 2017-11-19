@@ -10,11 +10,13 @@ import java.util.*;
 
 /**
  * Created by The Diamond Doge on 17.11.2017.
+ *
+ * Functions to process session time
  */
 public class WorkWithTime {
 
-    private Map<String, ArrayList<Person>> people;
     private final DateTimeFormatter DATE_FORMAT = DateTimeFormat.forPattern("dd-MMM-yyyy").withLocale(Locale.ENGLISH);
+    private Map<String, ArrayList<Person>> people;
 
     public WorkWithTime() {
         people = new HashMap<>();
@@ -50,7 +52,6 @@ public class WorkWithTime {
 
         if (people.containsKey(keyDate)) {
             ArrayList<Person> internalMapArrayList = people.get(keyDate);
-
             internalMapArrayList.add(person);
             people.put(keyDate, internalMapArrayList);
         } else {

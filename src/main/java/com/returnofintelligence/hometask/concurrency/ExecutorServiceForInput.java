@@ -9,6 +9,8 @@ import java.util.concurrent.Executors;
 
 /**
  * Created by The Diamond Doge on 19.11.2017.
+ *
+ * Start processing new file in new thread
  */
 
 public class ExecutorServiceForInput{
@@ -21,14 +23,16 @@ public class ExecutorServiceForInput{
         this.queue = queue;
     }
 
-    public void execute() {
+    public void execute(String inDirectory, String outDirectory) {
         executorService.submit(new Runnable() {
             @Override
             public void run() {
                 try {
-                    new MethodOrder().call(queue.take());
+                    if(queue.size() != 0) {
+                        new MethodOrder(outDirectory, inDirectory).call(queue.take());
+                    }
                 } catch (InterruptedException e) {
-                    throw new RuntimeException(Thread.currentThread().getName() + "oops!");
+                    throw new RuntimeException(Thread.currentThread().getName() + "terminated!");
                 }
             }
         });

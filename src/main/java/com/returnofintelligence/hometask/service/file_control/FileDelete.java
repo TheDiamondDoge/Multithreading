@@ -6,27 +6,17 @@ import java.nio.file.Path;
 
 /**
  * Created by The Diamond Doge on 19.11.2017.
+ *
+ * Create new file in "out" directory and delete file from 'in' directory
  */
-public class FileDeleteCreate {
+public class FileDelete {
 
-    private static String PREFIX = "\\avg_";
-    private String outDirectory = "C:\\RoI\\out";
-    private String inDirectory = "C:\\RoI\\in";
+    private String outDirectory;
     private Path inFilename;
 
-    public FileDeleteCreate(Path path){
+    public FileDelete(Path path, String outDirectory){
         this.inFilename = path;
-    }
-
-    public String createFile() throws IOException {
-
-        String resultPath = outDirectory + PREFIX + inFilename.getFileName();
-        File f = new File(resultPath);
-
-        f.getParentFile().mkdirs();
-        f.createNewFile();
-
-        return resultPath;
+        this.outDirectory = outDirectory;
     }
 
     public void deleteFile() {
@@ -34,7 +24,7 @@ public class FileDeleteCreate {
             File file = new File(inFilename.toString());
 
             if (file.delete()) {
-                System.out.println(file.getName() + " is deleted!");
+                System.out.println(file.getName() + " was processed and deleted!");
             } else {
                 System.out.println("Delete operation is failed.");
             }

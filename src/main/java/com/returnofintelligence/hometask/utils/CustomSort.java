@@ -6,11 +6,14 @@ import java.util.*;
 
 /**
  * Created by The Diamond Doge on 18.11.2017.
+ *
+ * Sorting data by userID in ASC order
  */
 public class CustomSort {
 
     public void sortByUserId(Map<String, ArrayList<Person>> persons) {
         Set<String> keys = persons.keySet();
+
         for (String s : keys) {
             ArrayList<Person> people = persons.get(s);
             Collections.sort(people, new Comparator<Person>() {

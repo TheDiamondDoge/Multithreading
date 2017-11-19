@@ -2,41 +2,46 @@ package com.returnofintelligence.hometask.service.printer;
 
 import com.returnofintelligence.hometask.model.Person;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 
 /**
  * Created by The Diamond Doge on 18.11.2017.
+ *
+ * Print data into new file in 'out' directory
  */
 public class Printer {
 
-    private final String ENCODING = "UTF-8";
+    private final String PREFIX = "\\avg_";
 
     private Map<String, ArrayList<Person>> persons;
-    private String outFilepath;
+    private String outDirectory;
+    private Path filePath;
 
-    public Printer(Map<String, ArrayList<Person>> persons, String outFilepath) {
+    public Printer(Map<String, ArrayList<Person>> persons, String outDirectory, Path filePath) {
         this.persons = persons;
-        this.outFilepath = outFilepath;
+        this.outDirectory = outDirectory;
+        this.filePath = filePath;
     }
 
-    public void csvPrinter() throws FileNotFoundException, UnsupportedEncodingException {
-        PrintWriter printWriter = new PrintWriter(outFilepath, ENCODING);
+    public void csvPrinter() throws IOException {
+        File file = new File(outDirectory + PREFIX + filePath.getFileName());
+        FileWriter writer = new FileWriter(file, true);
 
         Set<String> keys = persons.keySet();
+        StringBuilder stringBuilder = new StringBuilder();
 
         for (String key : keys) {
             ArrayList<Person> sessions = persons.get(key);
-            printWriter.println(key);
+            stringBuilder.append(key + "\n");
             for (Person p : sessions) {
-                printWriter.println(p);
+                stringBuilder.append(p.toString() + "\n");
             }
         }
-
-        printWriter.close();
+        writer.write(stringBuilder.toString());
+        writer.close();
     }
 }

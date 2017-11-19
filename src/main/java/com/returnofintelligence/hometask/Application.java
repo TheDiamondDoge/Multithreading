@@ -2,6 +2,7 @@ package com.returnofintelligence.hometask;
 
 import com.returnofintelligence.hometask.concurrency.ExecutorServiceForInput;
 import com.returnofintelligence.hometask.concurrency.WatchServiceForInput;
+import com.returnofintelligence.hometask.utils.GetProperties;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,28 +16,41 @@ import java.util.concurrent.Executors;
 
 /**
  * Created by The Diamond Doge on 18.11.2017.
+ *
+ * Creating threads for WatchService and file processing algorithm
+ * Waiting for 'stop' command to shutdown the application
  */
 public class Application {
 
+    private final String STOP_COMMAND = "stop";
+
     private Path path;
     private BlockingQueue<Path> queue;
-    private final String STOP_COMMAND = "stop";
+    private String inDirectory;
+    private String outDirectory;
 
     public void applicationStart() {
 
-        path = Paths.get("C:\\RoI\\in");
-        queue = new ArrayBlockingQueue(1024);
+        queue = new ArrayBlockingQueue(512);
+        GetProperties properties = new GetProperties();
+
+        inDirectory = properties.getInDirectory();
+        outDirectory = properties.getOutDirectory();
+        path = Paths.get(inDirectory);
         fillQueue(queue);
 
-        Thread watchServiceThread = new Thread(new Runnable() {
+        Thread watchServiceThread = new Thread(new Runnable(){
             @Override
             public void run() {
                 try {
                     while (!Thread.currentThread().isInterrupted()) {
+
                         new WatchServiceForInput(path, queue).processEvents();
                     }
                 } catch (RuntimeException e) {
                     throw new RuntimeException(Thread.currentThread().getName() + "oops!");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -52,7 +66,7 @@ public class Application {
                     ExecutorServiceForInput executorServiceForInpit = new ExecutorServiceForInput(processingThreads, queue);
                     while (true) {
                         if (queue.size() != 0) {
-                            executorServiceForInpit.execute();
+                            executorServiceForInpit.execute(inDirectory, outDirectory);
                         }
                     }
                 }

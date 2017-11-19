@@ -13,6 +13,8 @@ import java.util.Map;
 
 /**
  * Created by The Diamond Doge on 17.11.2017.
+ * <p>
+ * Reading data from '.csv' file
  */
 public class ReadCSV {
 
@@ -25,20 +27,22 @@ public class ReadCSV {
         persons = new HashMap<>();
         wwf = new WorkWithTime();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
-            String line;
+        synchronized (this) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+                String line;
 
-            while ((line = reader.readLine()) != null) {
-                wwf.twoDaysSession(createObject(line));
+                while ((line = reader.readLine()) != null) {
+                    wwf.twoDaysSession(createObject(line));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-
         return wwf.getMapMadeFromFile();
     }
 
-    private Person createObject(String line) {
+
+    public Person createObject(String line) {
         String[] attributes = line.split(",");
 
         int date = Integer.parseInt(attributes[0]);
