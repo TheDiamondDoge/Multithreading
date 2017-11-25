@@ -29,7 +29,7 @@ public class Printer {
 
     public void csvPrinter() throws IOException {
         File file = new File(outDirectory + PREFIX + filePath.getFileName());
-        FileWriter writer = new FileWriter(file, true);
+        FileWriter writer = new FileWriter(file);
 
         Set<String> keys = persons.keySet();
         StringBuilder stringBuilder = new StringBuilder();
