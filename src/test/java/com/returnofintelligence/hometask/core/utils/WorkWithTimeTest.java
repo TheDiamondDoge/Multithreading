@@ -1,16 +1,13 @@
-package com.returnofintelligence.hometask.utils;
+package com.returnofintelligence.hometask.core.utils;
 
-import com.returnofintelligence.hometask.model.Person;
+import com.returnofintelligence.hometask.core.model.Person;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by The Diamond Doge on 19.11.2017.

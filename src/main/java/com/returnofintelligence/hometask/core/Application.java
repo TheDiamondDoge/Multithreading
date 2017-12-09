@@ -1,8 +1,8 @@
-package com.returnofintelligence.hometask;
+package com.returnofintelligence.hometask.core;
 
-import com.returnofintelligence.hometask.concurrency.ExecutorServiceForInput;
-import com.returnofintelligence.hometask.concurrency.WatchServiceForInput;
-import com.returnofintelligence.hometask.utils.GetProperties;
+import com.returnofintelligence.hometask.core.concurrency.ExecutorServiceForInput;
+import com.returnofintelligence.hometask.core.concurrency.WatchServiceForInput;
+import com.returnofintelligence.hometask.core.utils.GetProperties;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -66,6 +66,11 @@ public class Application {
                     ExecutorServiceForInput executorServiceForInpit = new ExecutorServiceForInput(processingThreads, queue);
                     while (true) {
                         if (queue.size() != 0) {
+                            try {
+                                Thread.sleep(10);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                             executorServiceForInpit.execute(inDirectory, outDirectory);
                         }
                     }

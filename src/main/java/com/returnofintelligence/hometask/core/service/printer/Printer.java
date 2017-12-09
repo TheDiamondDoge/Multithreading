@@ -1,6 +1,6 @@
-package com.returnofintelligence.hometask.service.printer;
+package com.returnofintelligence.hometask.core.service.printer;
 
-import com.returnofintelligence.hometask.model.Person;
+import com.returnofintelligence.hometask.core.model.Person;
 
 import java.io.*;
 import java.nio.file.Path;

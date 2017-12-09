@@ -1,11 +1,12 @@
-package com.returnofintelligence.hometask;
+package com.returnofintelligence.hometask.core;
 
-import com.returnofintelligence.hometask.model.Person;
-import com.returnofintelligence.hometask.utils.CustomSort;
-import com.returnofintelligence.hometask.utils.WorkWithTime;
-import com.returnofintelligence.hometask.service.file_control.FileDelete;
-import com.returnofintelligence.hometask.service.file_control.ReadCSV;
-import com.returnofintelligence.hometask.service.printer.Printer;
+import com.returnofintelligence.hometask.core.model.Person;
+import com.returnofintelligence.hometask.core.utils.CustomSort;
+import com.returnofintelligence.hometask.core.utils.ProcessedFiles;
+import com.returnofintelligence.hometask.core.utils.WorkWithTime;
+import com.returnofintelligence.hometask.core.service.file_control.FileDelete;
+import com.returnofintelligence.hometask.core.service.file_control.ReadCSV;
+import com.returnofintelligence.hometask.core.service.printer.Printer;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -30,6 +31,7 @@ public class MethodOrder{
         CustomSort customSort = new CustomSort();
         ReadCSV readCSV = new ReadCSV();
         WorkWithTime workWithTime = new WorkWithTime();
+        ProcessedFiles.add(path.toString());
         FileDelete fileDelete = new FileDelete(path, outDirectory);
 
         Map<String, ArrayList<Person>> people = readCSV.readCSV(path.toString());

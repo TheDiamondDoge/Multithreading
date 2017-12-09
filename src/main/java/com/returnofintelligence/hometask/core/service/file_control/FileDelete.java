@@ -1,7 +1,6 @@
-package com.returnofintelligence.hometask.service.file_control;
+package com.returnofintelligence.hometask.core.service.file_control;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Path;
 
 /**

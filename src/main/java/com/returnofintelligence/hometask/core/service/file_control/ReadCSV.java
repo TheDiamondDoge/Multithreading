@@ -1,7 +1,7 @@
-package com.returnofintelligence.hometask.service.file_control;
+package com.returnofintelligence.hometask.core.service.file_control;
 
-import com.returnofintelligence.hometask.model.Person;
-import com.returnofintelligence.hometask.utils.WorkWithTime;
+import com.returnofintelligence.hometask.core.model.Person;
+import com.returnofintelligence.hometask.core.utils.WorkWithTime;
 import org.joda.time.DateTime;
 
 import java.io.BufferedReader;

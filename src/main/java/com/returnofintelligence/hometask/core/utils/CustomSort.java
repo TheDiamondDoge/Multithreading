@@ -1,6 +1,6 @@
-package com.returnofintelligence.hometask.utils;
+package com.returnofintelligence.hometask.core.utils;
 
-import com.returnofintelligence.hometask.model.Person;
+import com.returnofintelligence.hometask.core.model.Person;
 
 import java.util.*;
 

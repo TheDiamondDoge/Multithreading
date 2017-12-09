@@ -1,6 +1,6 @@
-package com.returnofintelligence.hometask.service.file_control;
+package com.returnofintelligence.hometask.core.service.file_control;
 
-import com.returnofintelligence.hometask.model.Person;
+import com.returnofintelligence.hometask.core.model.Person;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by The Diamond Doge on 19.11.2017.

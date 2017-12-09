@@ -1,9 +1,8 @@
-package com.returnofintelligence.hometask.utils;
+package com.returnofintelligence.hometask.core.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Paths;
 import java.util.Properties;
 
 /**

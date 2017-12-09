@@ -1,11 +1,10 @@
-package com.returnofintelligence.hometask.concurrency;
+package com.returnofintelligence.hometask.core.concurrency;
 
-import com.returnofintelligence.hometask.MethodOrder;
+import com.returnofintelligence.hometask.core.MethodOrder;
 
 import java.nio.file.Path;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * Created by The Diamond Doge on 19.11.2017.

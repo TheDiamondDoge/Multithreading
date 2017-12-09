@@ -1,4 +1,4 @@
-package com.returnofintelligence.hometask.concurrency;
+package com.returnofintelligence.hometask.core.concurrency;
 
 import java.io.IOException;
 import java.nio.file.*;

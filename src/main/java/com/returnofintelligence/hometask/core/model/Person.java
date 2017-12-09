@@ -1,12 +1,9 @@
-package com.returnofintelligence.hometask.model;
+package com.returnofintelligence.hometask.core.model;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 import java.util.Date;
-import java.util.Locale;
 
 /**
  * Created by The Diamond Doge on 17.11.2017.
