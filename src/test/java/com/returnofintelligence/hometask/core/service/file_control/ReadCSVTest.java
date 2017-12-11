@@ -2,9 +2,12 @@ package com.returnofintelligence.hometask.core.service.file_control;
 
 import com.returnofintelligence.hometask.core.model.Person;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -13,17 +16,18 @@ import java.util.Set;
 /**
  * Created by The Diamond Doge on 19.11.2017.
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"/beans/readCSVBean.xml"})
 public class ReadCSVTest {
 
     private Map<String, ArrayList<Person>> users;
+
+    @Resource(name = "p1")
     private Person p1;
+
+    @Resource(name = "p2")
     private Person p2;
 
-    @Before
-    public void initialize(){
-        p1 = new Person(1455812018, "test", "http://ru.wikipedia.org", 100);
-        p2 = new Person(1455812019, "user10", "http://hh.ru", 30);
-    }
 
     @Test
     public void readCSV() throws Exception {

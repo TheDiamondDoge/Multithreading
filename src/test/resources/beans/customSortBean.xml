@@ -1,0 +1,44 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <util:map id="map" map-class="java.util.HashMap">
+        <entry key-ref="key" value-ref="arrayList"/>
+    </util:map>
+
+
+    <util:list id="arrayList" list-class="java.util.ArrayList"
+               value-type="com.returnofintelligence.hometask.core.model.Person">
+        <ref bean="p1"/>
+        <ref bean="p2"/>
+        <ref bean="p3"/>
+    </util:list>
+
+    <bean id="p1" class="com.returnofintelligence.hometask.core.model.Person">
+        <constructor-arg value="1"/>
+        <constructor-arg value="usertest3"/>
+        <constructor-arg value="http://test.test"/>
+        <constructor-arg value="2"/>
+    </bean>
+
+    <bean id="p2" class="com.returnofintelligence.hometask.core.model.Person">
+        <constructor-arg value="2"/>
+        <constructor-arg value="usertest13"/>
+        <constructor-arg value="http://test.test"/>
+        <constructor-arg value="3"/>
+    </bean>
+
+    <bean id="p3" class="com.returnofintelligence.hometask.core.model.Person">
+        <constructor-arg value="2"/>
+        <constructor-arg value="usertest1"/>
+        <constructor-arg value="http://test.test"/>
+        <constructor-arg value="3"/>
+    </bean>
+
+    <bean id="key" class="java.lang.String">
+        <constructor-arg value="01-Jan-1970"/>
+    </bean>
+
+</beans>

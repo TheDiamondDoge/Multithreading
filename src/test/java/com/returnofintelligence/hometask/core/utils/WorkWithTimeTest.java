@@ -4,7 +4,11 @@ import com.returnofintelligence.hometask.core.model.Person;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,21 +16,23 @@ import java.util.Map;
 /**
  * Created by The Diamond Doge on 19.11.2017.
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(value = {"/beans/workWithTimeBean.xml"})
 public class WorkWithTimeTest {
 
     private Map<String, ArrayList<Person>> users;
-    private WorkWithTime wwt;
-    private Person p1;
-    private Person p2;
-    private String key = "02-Jan-1970";
 
-    @Before
-    public void initialize(){
-        users = new HashMap<>();
-        wwt = new WorkWithTime();
-        p1 = new Person(86390, "test", "http://www.test.ru", 20);
-        p2 = new Person(86500, "test", "http://www.test.ru", 20);
-    }
+    @Resource(name = "wwt")
+    private WorkWithTime wwt;
+
+    @Resource(name = "p1")
+    private Person p1;
+
+    @Resource(name = "p2")
+    private Person p2;
+
+    @Resource(name = "key")
+    private String key;
 
     @Test
     public void twoDaysSession() throws Exception {

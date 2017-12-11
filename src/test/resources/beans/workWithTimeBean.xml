@@ -1,0 +1,26 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="wwt" class="com.returnofintelligence.hometask.core.utils.WorkWithTime"/>
+    <bean id="hashmap" class="java.util.HashMap"/>
+
+    <bean id="p1" class="com.returnofintelligence.hometask.core.model.Person">
+        <constructor-arg value="86390"/>
+        <constructor-arg value="test"/>
+        <constructor-arg value="http://www.test.ru"/>
+        <constructor-arg value="20"/>
+    </bean>
+
+    <bean id="p2" class="com.returnofintelligence.hometask.core.model.Person">
+        <constructor-arg value="86500"/>
+        <constructor-arg value="test"/>
+        <constructor-arg value="http://www.test.ru"/>
+        <constructor-arg value="20"/>
+    </bean>
+
+    <bean id = "key" class="java.lang.String">
+        <constructor-arg value="02-Jan-1970"/>
+    </bean>
+</beans>
